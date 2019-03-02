@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %} Seja bem-vindo {% endblock %}
+
+{% block main %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+
+    <title>Seja bem-vindo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/editor.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+    <div class="float-right">
+        <a href="{%url 'logout'%}" type="submit" class="btn btn-danger" class="float-right">Sair</a>
+    </div><br>
+  </head>
+
+  <body  class="container-fluid">
+
+
+    <div >
+      <div class="header clearfix"  >
+        <nav>
+          <ul class="nav nav-pills" >
+            <li class="nav-item">
+              <a class="badge badge-pill badge-primary" href="{% url 'persons_new' %}"> <span>Cadastro Usúario <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="badge badge-pill badge-info" href="#">Sobre</a>
+            </li>
+            <li class="nav-item" class="pull-right">
+              <a class="badge badge-pill badge-info" href="">Contatos</a>
+            </li>
+          </ul>
+        </nav>
+        <h5 class="text-muted">Projeto Teste</h5>
+      </div>
+
+      <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+        <h1 >Página Inicial</h1>
+        <p class="lead">Projeto simples, com todas funcionalidades do FrameWork Django.</p>
+            <a class="btn btn-lg btn-success" >{% if user.is_authenticated %}
+            <p class="text-center">Olá {{ user.username }} </p>
+
+        {% else %}
+            <a href="{% url 'user_login'%}"class="btn btn-primary" >Entrar</a>
+        {% endif %}
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <h4>Inserção</h4>
+               <p>Nesse aplicativo você pode inserir qualquer usúario com login-master.</p>
+            </div>
+            <div class="col-sm">
+              <h4>Exclusão</h4>
+               <p>Nesse aplicativo você pode excluir qualquer usúario com login-master.</p>
+            </div>
+            <div class="col-sm">
+                <h4>Alteração</h4>
+                <p>Nesse aplicativo você pode alterar qualquer usúario com login-master.</p>
+            </div>
+          </div>
+        </div>
+    </div> <!-- /container -->
+
+
+    </body>
+</html>
+
+
+{% endblock %}

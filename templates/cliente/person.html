@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Seja bem-vindo {% endblock %}
+{% load static %}
+
+{% block main %}
+
+    <a href="{% url 'logout' %}"class="btn btn-danger" class="float-right" >Sair</a>
+
+    <h1>
+        <h1>Lista de usúarios cadastrados.</h1>
+        <ul>
+            {% for person in persons %}
+            <li>
+                <nav class="navbar navbar-light bg-light">
+                <a href="{% url 'persons_update' person.id %}"class="btn btn-outline-primary">{{ person }}</a>
+                <a href="{% url 'persons_delete' person.id %}"class="btn btn-danger"class="navbar-brand">Deletar</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </h1>
+    <a href="{% url 'persons_new' %}"class="btn btn-primary">Novo cliente</a>
+
+{% endblock %}
